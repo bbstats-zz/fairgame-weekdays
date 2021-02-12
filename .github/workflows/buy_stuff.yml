@@ -5,7 +5,7 @@ name: Run Script
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 14 * * * '
+    - cron:  '0 * * * *'
   workflow_dispatch:
  
 
@@ -18,8 +18,3 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python3 nba_stable_spr.py
       - run: python3 the_lehigh_method.py
-
-      - uses: actions/upload-artifact@v2
-        with:
-          path: ${{ github.workspace }}/Artifacts
-          name: ${{ github.run_number }}
